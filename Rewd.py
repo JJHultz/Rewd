@@ -1,18 +1,41 @@
+#Rewd.py iteration 1
+#Jace Hultzen copiloted by GPT-4
+
 import requests
 from datetime import datetime, timedelta
 import pandas as pd
 import json
+import googlemaps
+from datetime import datetime
+
+gmaps = googlemaps.Client(key='')
 
 # Meteomatics API credentials
-username = 'hultzenengineering_hultzen_jace'
-password = 'na5QSr53SO'
+username = ''
+password = ''
 
 # Time range for the API request
 start_time = datetime.utcnow().isoformat() + "Z"  # Start time (now)
 end_time = (datetime.utcnow() + timedelta(hours=48)).isoformat() + "Z"  # End time (48 hours from now)
 
+
+
 # Location (latitude and longitude) and parameter of interest
-latitude, longitude = 38.551835, -121.769379  # Example coordinates, adjust accordingly
+while True:
+    user_input = input("Enter a Location or Latitude")
+    try:
+        latitude = float(user_input)
+        longitude = input("Enter Longitude or city")
+        break
+    except:
+        #Geocoding
+        geocode_result = gmaps.geocode(user_input)
+        break
+
+latitude = geocode_result[0]['geometry']['location']['lat']
+longitude = geocode_result[0]['geometry']['location']['lng']
+
+
 parameter = 'precip_1h:mm'  # Precipitation over 1 hour in mm
 
 # Construct the API request URL
