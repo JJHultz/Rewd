@@ -4,8 +4,8 @@ import pandas as pd
 import json
 
 # Meteomatics API credentials
-username = 'hultzenengineering_hultzen_jace'
-password = 'na5QSr53SO'
+username = ''
+password = ''
 
 # Time range for the API request
 start_time = datetime.utcnow().isoformat() + "Z"  # Start time (now)
