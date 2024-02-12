@@ -1,5 +1,7 @@
-#Rewd.py iteration 1
-#Jace Hultzen copiloted by GPT-4
+# Rewd.py iteration 1
+# Jace Hultzen copiloted by GPT-4
+
+# This program will print a 48 hour precipitation forecast for a given location, requiring a meteomatics API key and a google maps API key
 
 import requests
 from datetime import datetime, timedelta
@@ -7,12 +9,16 @@ import pandas as pd
 import json
 import googlemaps
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-gmaps = googlemaps.Client(key='')
+# Load the environment variables
+load_dotenv()
+gmapsAPI = os.getenv("gmapsAPI")
+username = os.getenv("meteomaticsUsername")
+password = os.getenv("meteomaticsPassword")
 
-# Meteomatics API credentials
-username = 'test'
-password = ''
+gmaps = googlemaps.Client(key=gmapsAPI)
 
 # Time range for the API request
 start_time = datetime.utcnow().isoformat() + "Z"  # Start time (now)
