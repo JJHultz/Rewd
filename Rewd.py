@@ -11,7 +11,7 @@ from datetime import datetime
 gmaps = googlemaps.Client(key='')
 
 # Meteomatics API credentials
-username = ''
+username = 'test'
 password = ''
 
 # Time range for the API request
